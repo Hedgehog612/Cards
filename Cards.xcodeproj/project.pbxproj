@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F492C7E7231E1D4500A31D45 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492C7E6231E1D4500A31D45 /* main.swift */; };
-		F492C7F02320BEC500A31D45 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F492C7EF2320BEC500A31D45 /* Card.swift */; };
+		FFACC1D923220FEE0012465F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC1D823220FEE0012465F /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,8 +24,7 @@
 
 /* Begin PBXFileReference section */
 		F492C7E3231E1D4500A31D45 /* Cards */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cards; sourceTree = BUILT_PRODUCTS_DIR; };
-		F492C7E6231E1D4500A31D45 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		F492C7EF2320BEC500A31D45 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Card.swift; path = ../../../../Documents/Card.swift; sourceTree = "<group>"; };
+		FFACC1D823220FEE0012465F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +41,7 @@
 		F492C7DA231E1D4500A31D45 = {
 			isa = PBXGroup;
 			children = (
-				F492C7E5231E1D4500A31D45 /* Cards */,
+				FFACC1D823220FEE0012465F /* main.swift */,
 				F492C7E4231E1D4500A31D45 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,15 +52,6 @@
 				F492C7E3231E1D4500A31D45 /* Cards */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F492C7E5231E1D4500A31D45 /* Cards */ = {
-			isa = PBXGroup;
-			children = (
-				F492C7E6231E1D4500A31D45 /* main.swift */,
-				F492C7EF2320BEC500A31D45 /* Card.swift */,
-			);
-			path = Cards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,6 +86,7 @@
 				TargetAttributes = {
 					F492C7E2231E1D4500A31D45 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -122,8 +112,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F492C7E7231E1D4500A31D45 /* main.swift in Sources */,
-				F492C7F02320BEC500A31D45 /* Card.swift in Sources */,
+				FFACC1D923220FEE0012465F /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,8 +237,15 @@
 		F492C7EB231E1D4500A31D45 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -257,7 +253,13 @@
 		F492C7EC231E1D4500A31D45 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};

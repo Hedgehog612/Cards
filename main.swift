@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 import Cocoa
 
 
@@ -168,10 +167,11 @@ func draw() -> Bool {
     print("From 0 to 3, your cards are...")
     player.show()
     print("Which card will you discard?")
-    let choice = readline()
+    let choice = readLine()
     print("You chose\(choice!)")
-    discard.append(player(at: choice))
-    player.remove(at: choice)
+//    discard.append(player(at: choice))
+//    player.remove(at: choice)
+    return true
     }
 
 func toss() {
