@@ -103,29 +103,32 @@ class Game {
     //------------------------------------------------------------------------------
     func moveAI() {
         if discard.cards[0].score > 9 {
-            tossAI(player: opponent)
+            tossAI()
             print("Your opponent draws from the discard.")
-            discardAI()
         }
         else {
-            drawAI(player: opponent, count: 1)
+            drawAI()
             print("Your opponent draws from the deck.")
-            discardAI()
         }
     }
     
     //------------------------------------------------------------------------------
     // tossAI
-    // discardAI is how the AI determines what to discard.
+    // discardAI is how the AI draws from the discard.
     //------------------------------------------------------------------------------
     func tossAI() {
-        
+        discard.dealCard(recipient: opponent.deck, count: 1)
+        discardAI()
     }
     
     //------------------------------------------------------------------------------
     // drawAI
-    // discardAI is how the AI determines what to discard.
+    // draw is how the AI draws from the deck.
     //------------------------------------------------------------------------------
+    func drawAI() {
+        dealer.dealCard(recipient: opponent.deck, count: 1)
+        discardAI()
+    }
     
     //------------------------------------------------------------------------------
     // discardAI
@@ -216,6 +219,7 @@ class Game {
         let choice = readLine()
         print("You chose \(choice!)")
         let chosenSuit = Suit(choice!)!
+        //TODO: Prevent crashes when an incorrect entry is made
 
         let playerScore = human.scoreSuit(suit: chosenSuit)
         
