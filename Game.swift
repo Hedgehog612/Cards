@@ -112,6 +112,7 @@ class Game {
         if opponentScore == 31 {
             print("Your opponent reaches 31 points and you lose the game!")
             endGame = true
+            return
         }
         if discard.cards[0].score > 9 {
             tossAI()
