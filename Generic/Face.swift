@@ -14,26 +14,29 @@ import Foundation
 // Defines the standard faces for a deck of cards (Ace, 2 - 10, and the
 // face cards).
 //------------------------------------------------------------------------------
-enum Face {
+enum Face: CaseIterable {
     case Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
+
+    
+    //------------------------------------------------------------------------------
+    // score
+    // What's the score value of this face in the 31 card game?
+    //------------------------------------------------------------------------------
+    func score() -> Int {
+        switch self {
+        case .Ace: return 11
+        case .Two: return 2
+        case .Three: return 3
+        case .Four: return 4
+        case .Five: return 5
+        case .Six: return 6
+        case .Seven: return 7
+        case .Eight: return 8
+        case .Nine: return 9
+        case .Ten: return 10
+        case .Jack: return 10
+        case .Queen: return 10
+        case .King: return 10
+        }
+    }
 }
-
-// Defines all the available faces
-let faces: [Face] = [.Ace, .Two, .Three, .Four, .Five, .Six, .Seven, .Eight, .Nine, .Ten, .Jack, .Queen, .King]
-
-// Specifies the score of each face.
-let faceScore: [Face: Int] = [
-    .Ace: 11,
-    .Two: 2,
-    .Three: 3,
-    .Four: 4,
-    .Five: 5,
-    .Six: 6,
-    .Seven: 7,
-    .Eight: 8,
-    .Nine: 9,
-    .Ten: 10,
-    .Jack: 10,
-    .Queen: 10,
-    .King: 10
-]

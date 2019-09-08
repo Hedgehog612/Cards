@@ -36,6 +36,6 @@ class Card {
     // Renders a description of the card to the console.
     //------------------------------------------------------------------------------
     func show() {
-        print("This card is the \(face) of \(face).")
+        print("This card is the \(face) of \(suit.string()).")
     }
 }
