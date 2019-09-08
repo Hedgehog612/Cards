@@ -13,36 +13,43 @@ import Foundation
 // Suit
 // Defines the standard four suits in a deck of cards.
 //------------------------------------------------------------------------------
-enum Suit {
+enum Suit: CaseIterable {
     case Spade, Diamond, Club, Heart
-}
-
-// Defines all the available suits
-let suits: [Suit] = [.Club, .Diamond, .Heart, .Spade]
-
-// Renders the suits as strings for reference
-let suitString: [Suit: String] = [
-    .Club: "Club",
-    .Diamond: "Diamond",
-    .Heart: "Heart",
-    .Spade: "Spade",
-]
-
-// Parses a string and returns the suit it corresponds to
-func suitFromString(_ suitName: String) -> Suit {
     
-    if suitName.hasPrefix("C") || suitName.hasPrefix("c") {
-        return .Club
-    } else if suitName.hasPrefix("D") || suitName.hasPrefix("d") {
-        return .Diamond
-    } else if suitName.hasPrefix("H") || suitName.hasPrefix("h") {
-        return .Heart
-    } else if suitName.hasPrefix("S") || suitName.hasPrefix("s") {
-        return .Spade
+
+    //------------------------------------------------------------------------------
+    // Initializer from string.
+    // Parses a string and returns the corresponding Suit
+    //------------------------------------------------------------------------------
+    init?(_ suitName: String) {
+        if suitName.hasPrefix("C") || suitName.hasPrefix("c") {
+            self = .Club
+        } else if suitName.hasPrefix("D") || suitName.hasPrefix("d") {
+            self = .Diamond
+        } else if suitName.hasPrefix("H") || suitName.hasPrefix("h") {
+            self = .Heart
+        } else if suitName.hasPrefix("S") || suitName.hasPrefix("s") {
+            self = .Spade
+        } else {
+            return nil
+        }
     }
     
-    print("ERROR! Bad suit name \(suitName).")
-    return .Club
-    //TODO: Have this ask for another input instead of defaulting to club.
+    
+    //------------------------------------------------------------------------------
+    // string
+    // Returns a human-readable name for this suit
+    //------------------------------------------------------------------------------
+    func string() -> String {
+        switch self {
+        case .Club:
+            return "Clubs"
+        case .Diamond:
+            return "Diamonds"
+        case .Heart:
+            return "Hearts"
+        case .Spade:
+            return "Spades"
+        }
+    }
 }
-

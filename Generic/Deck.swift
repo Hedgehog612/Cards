@@ -30,7 +30,7 @@ class Deck {
     // Creates a 52-card deck in a predetermined order.
     //------------------------------------------------------------------------------
     func build() {
-        for suit in suits {
+        for suit in Suit.allCases {
             for face in faces {
                 cards.append(Card(face: face, suit: suit, score: faceScore[face]!))
             }
