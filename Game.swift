@@ -23,6 +23,8 @@ class Game {
 
     
     //------------------------------------------------------------------------------
+    // Play
+    // Play begins the game by creating decks and starting the player's turn
     //------------------------------------------------------------------------------
     func play() {
         dealer.cards.remove(at: 0)
@@ -57,6 +59,9 @@ class Game {
 
 
     //------------------------------------------------------------------------------
+    // takeTurn
+    // This is where the player takes their turn.
+    // This allows the player to chose between several actions on their turn.
     //------------------------------------------------------------------------------
     func takeTurn() -> Bool {
         // The bool here is for a later change, where some actions end the turn and some don't.
@@ -81,6 +86,8 @@ class Game {
     
     
     //------------------------------------------------------------------------------
+    // moveAI
+    // moveAI is how the AI determines what to play and executes its turn.
     //------------------------------------------------------------------------------
     func moveAI() {
         
@@ -88,6 +95,8 @@ class Game {
     
     
     //------------------------------------------------------------------------------
+    // Help
+    // Help contains useful information about the available actions to take on your turn.
     //------------------------------------------------------------------------------
     func help() {
         print("You can draw a card from the deck or from the top of the discard.")
@@ -100,6 +109,8 @@ class Game {
     
 
     //------------------------------------------------------------------------------
+    // draw
+    // Draw takes a card from the top of the deck, then discards a card from your hand.
     //------------------------------------------------------------------------------
     func draw() -> Bool {
         dealer.dealCard(recipient: player, count: 1)
@@ -118,6 +129,8 @@ class Game {
     
     
     //------------------------------------------------------------------------------
+    // toss
+    // Toss draws the top card of the discard and then discards a card.
     //------------------------------------------------------------------------------
     func toss() -> Bool {
         discard.dealCard(recipient: player, count: 1)
@@ -136,6 +149,8 @@ class Game {
     
     
     //------------------------------------------------------------------------------
+    // knock
+    // Knock tests your score in a specific suit against your opponent's.
     //------------------------------------------------------------------------------
     func knock() {
         
