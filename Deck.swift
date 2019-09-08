@@ -8,14 +8,26 @@
 
 import Cocoa
 
+
+//------------------------------------------------------------------------------
+// Deck
+// Contains the order of cards in a given location
+//------------------------------------------------------------------------------
 class Deck {
     //This creates the deck that is used for everything else.
     var cards = [Card]()
     
+    //------------------------------------------------------------------------------
+    // Initializer
+    //------------------------------------------------------------------------------
     init(card cardIn: Card) {
         cards = [cardIn]
     }
     
+    //------------------------------------------------------------------------------
+    // build
+    // Creates a 52-card deck in a predetermined order
+    //------------------------------------------------------------------------------
     func build() {
         for suit in Suits {
             for face in faces {
@@ -24,15 +36,22 @@ class Deck {
         }
     }
     
-    
+    //------------------------------------------------------------------------------
+    // shuffle
+    // Randomizes the order of a deck
+    //------------------------------------------------------------------------------
     func shuffle() {
-        //        This function reshuffles and randomizes a deck of cards
+        
         for card in cards {
             card.order = Double.random(in: 0...1)
         }
         cards.sort { $0.order < $1.order }
     }
     
+    //------------------------------------------------------------------------------
+    // dealCard
+    // Moves a card from one deck to another
+    //------------------------------------------------------------------------------
     func dealCard(recipient: Deck, count: Int) {
         for _ in 1...count {
             let card = cards.first
@@ -40,8 +59,12 @@ class Deck {
             recipient.cards.append(card!)
         }
     }
+    
+    //------------------------------------------------------------------------------
+    // show
+    // Prints a list of cards in the deck
+    //------------------------------------------------------------------------------
     func show() {
-        // This function prints the deck
         for card in cards {
             card.show()
         }
