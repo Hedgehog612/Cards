@@ -113,13 +113,15 @@ class Game {
     // Help contains useful information about the available actions to take on your turn.
     //------------------------------------------------------------------------------
     func help() {
-        print("You can draw a card from the deck or from the top of the discard.")
-        print("Once you have drawn a card, you must discard a card.")
-        print("Your objective is to have cards worth a total of 31 points in hand.")
-        print("Face cards are worth 10 and aces are 11.")
-        print("To draw from the discard, type toss. To draw from the deck, type draw.")
-        print("If you have 31 points, type win. If you think you have more points than your opponent in a specific suit, type knock.")
-        print("Be careful - if you're wrong, you lose the game.")
+        print("""
+            You can draw a card from the deck or from the top of the discard.
+            Once you have drawn a card, you must discard a card.
+            Your objective is to have cards worth a total of 31 points in hand.
+            Face cards are worth 10 and aces are 11.
+            To draw from the discard, type toss. To draw from the deck, type draw.
+            If you have 31 points, type win. If you think you have more points than your opponent in a specific suit, type knock.
+            Be careful - if you're wrong, you lose the game.
+        """)
     }
     
 
@@ -172,7 +174,7 @@ class Game {
         print("You chose \(choice!)")
         var playerScore = 0
         for card in player.cards {
-            if choice == card.suit {
+            if choice == suitString[card.suit] {
                 playerScore = playerScore + card.score
             }
         }
