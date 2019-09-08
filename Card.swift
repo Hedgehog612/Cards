@@ -42,6 +42,7 @@ func suitFromString(_ suitName: String) -> Suit {
     
     print("ERROR! Bad suit name \(suitName).")
     return .Club
+    //TODO: Have this ask for another input instead of defaulting to club.
 }
 
 //------------------------------------------------------------------------------

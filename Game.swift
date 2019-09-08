@@ -171,30 +171,13 @@ class Game {
         let choice = readLine()
         print("You chose \(choice!)")
         var playerScore = 0
-        for card in human.deck.cards {
-            if choice == suitString[card.suit] {
-                playerScore = playerScore + card.score
-            }
-        }
+        let chosenSuit = suitFromString(choice!)
+        playerScore = human.scoreSuit(suit: chosenSuit)
         var opponentScore = 0
-        var opponentClub = 0
-        var opponentHeart = 0
-        var opponentSpade = 0
-        var opponentDiamond = 0
-        for card in opponent.deck.cards {
-            if suitString [card.suit] == "Club" {
-                opponentClub = opponentClub + card.score
-            }
-            if suitString [card.suit] == "Heart" {
-                opponentHeart = opponentHeart + card.score
-            }
-            if suitString [card.suit] == "Spade" {
-                opponentSpade = opponentSpade + card.score
-            }
-            if suitString [card.suit] == "Diamond" {
-                opponentDiamond = opponentDiamond + card.score
-            }
-        }
+        let opponentClub = opponent.scoreSuit(suit: .Club)
+        let opponentHeart = opponent.scoreSuit(suit: .Heart)
+        let opponentSpade = opponent.scoreSuit(suit: .Spade)
+        let opponentDiamond = opponent.scoreSuit(suit: .Diamond)
         if opponentClub > opponentScore {
             opponentScore = opponentClub
         }
