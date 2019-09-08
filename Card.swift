@@ -13,11 +13,11 @@ enum Suit {
 }
 let Suits: [Suit] = [.Club, .Diamond, .Heart, .Spade]
 
-enum Value {
+enum Face {
     case Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
 }
-let Values: [Value] = [.Ace, .Two, .Three, .Four, .Five, .Six, .Seven, .Eight, .Nine, .Ten, .Jack, .Queen, .King]
-let valuePoints: [Value: Int] = [
+let faces: [Face] = [.Ace, .Two, .Three, .Four, .Five, .Six, .Seven, .Eight, .Nine, .Ten, .Jack, .Queen, .King]
+let faceScore: [Face: Int] = [
     .Ace: 11,
     .Two: 2,
     .Three: 3,
@@ -34,18 +34,18 @@ let valuePoints: [Value: Int] = [
 ]
 
 class Card {
-    var value: Value
+    var face: Face
     var suit: Suit
-    var point: Int
+    var score: Int
     var order = 0.0
     
-    init(value valueIn: Value, suit suitIn: Suit, point pointIn: Int) {
-        value = valueIn
-        point = pointIn
+    init(face faceIn: Face, suit suitIn: Suit, score scoreIn: Int) {
+        face = faceIn
+        score = scoreIn
         suit = suitIn
     }
     
     func show() {
-        print("This card is the \(value) of \(suit).")
+        print("This card is the \(face) of \(face).")
     }
 }
