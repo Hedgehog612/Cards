@@ -172,9 +172,46 @@ class Game {
         print("You chose \(choice!)")
         var playerScore = 0
         for card in player.cards {
-            if choice == card.suit {
+            if choice == suitString [card.suit] {
                 playerScore = playerScore + card.score
             }
+        }
+        var opponentScore = 0
+        var opponentClub = 0
+        var opponentHeart = 0
+        var opponentSpade = 0
+        var opponentDiamond = 0
+        for card in opponent.cards {
+            if suitString [card.suit] == "Club" {
+                opponentClub = opponentClub + card.score
+            }
+            if suitString [card.suit] == "Heart" {
+                opponentHeart = opponentHeart + card.score
+            }
+            if suitString [card.suit] == "Spade" {
+                opponentSpade = opponentSpade + card.score
+            }
+            if suitString [card.suit] == "Diamond" {
+                opponentDiamond = opponentDiamond + card.score
+            }
+        }
+        if opponentClub > opponentScore {
+            opponentScore = opponentClub
+        }
+        if opponentHeart > opponentScore {
+            opponentScore = opponentHeart
+        }
+        if opponentSpade > opponentScore {
+            opponentScore = opponentSpade
+        }
+        if opponentDiamond > opponentScore {
+            opponentScore = opponentDiamond
+        }
+        if playerScore > opponentScore {
+            print("You win!")
+        }
+        else {
+            print("You lose!")
         }
         endGame = true
     }
