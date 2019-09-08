@@ -16,10 +16,10 @@ import Foundation
 // game logic.
 //------------------------------------------------------------------------------
 class Game {
-    let dealer = Deck(card: Card(face: .Ace, suit: .Spade, score: 11))
-    let player = Deck(card: Card(face: .Ace, suit: .Spade, score: 11))
-    let opponent = Deck(card: Card(face: .Ace, suit: .Spade, score: 11))
-    let discard = Deck(card: Card(face: .Ace, suit: .Spade, score: 11))
+    let dealer = Deck()
+    let player = Deck()
+    let opponent = Deck()
+    let discard = Deck()
 
     
     //------------------------------------------------------------------------------
@@ -27,17 +27,13 @@ class Game {
     // Play begins the game by creating decks and starting the player's turn
     //------------------------------------------------------------------------------
     func play() {
-        dealer.cards.remove(at: 0)
         dealer.build()
         dealer.shuffle()
         
-        player.cards.remove(at: 0)
         dealer.dealCard(recipient: player, count: 3)
         
-        opponent.cards.remove(at: 0)
         dealer.dealCard(recipient: opponent, count: 3)
         
-        discard.cards.remove(at: 0)
         dealer.dealCard(recipient: discard, count: 1)
         
         print("playerDeck")
