@@ -35,6 +35,7 @@ func play() {
     discard.show()
     
     func takeTurn() -> Bool {
+        // The bool here is for a later change, where some actions end the turn and some don't.
         print("\n\nWhat now, boss?")
         let choice = readLine()
         print("You chose \(choice!)")
