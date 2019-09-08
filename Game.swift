@@ -102,7 +102,14 @@ class Game {
     // moveAI is how the AI determines what to play and executes its turn.
     //------------------------------------------------------------------------------
     func moveAI() {
-        
+        if discard.cards(at: 0).score > 9 {
+            toss(player: opponent)
+            print("Your opponent draws from the discard.")
+        }
+        else {
+            draw(player: opponent)
+            print(")
+        }
     }
     
     
