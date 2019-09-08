@@ -32,10 +32,19 @@ class Card {
 
     
     //------------------------------------------------------------------------------
-    // show
-    // Renders a description of the card to the console.
+    // description
+    // Generates a text description of this card (Three of Hearts)
     //------------------------------------------------------------------------------
-    func show() {
-        print("This card is the \(face) of \(suit).")
+    func description() -> String {
+        return "\(face) of \(suit)"
+    }
+    
+    
+    //------------------------------------------------------------------------------
+    // shortDescription
+    // Generates a short text description of this card (3H)
+    //------------------------------------------------------------------------------
+    func shortDescription() -> String {
+        return "\(face.short())\(suit.short())"
     }
 }
