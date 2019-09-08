@@ -224,7 +224,7 @@ class Game {
         let playerScore = human.scoreSuit(suit: chosenSuit)
         
         // Now figure out the opponent's best suit
-        var opponentSuit = Suit.Club
+        var opponentSuit = Suit.Clubs
         var opponentScore = 0
         
         for suit in Suit.allCases {
@@ -242,8 +242,8 @@ class Game {
         else {
             print("You lose!")
         }
-        print("You had \(playerScore) points in \(chosenSuit.string())")
-        print("The AI had \(opponentScore) points in \(opponentSuit.string())")
+        print("You had \(playerScore) points in \(chosenSuit)")
+        print("The AI had \(opponentScore) points in \(opponentSuit)")
         endGame = true
     }
 }
