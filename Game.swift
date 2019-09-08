@@ -147,15 +147,8 @@ class Game {
     // discardAI is how the AI determines what to discard.
     //------------------------------------------------------------------------------
     func discardAI() {
-        var choice = 0
-        var choiceScore = 12
-        for (index, card) in opponent.deck.cards.enumerated() {
-            if card.score < choiceScore {
-                choiceScore = card.score
-                choice = index
-            }
-        }
-        discard(player: opponent, cardToDiscard: choice)
+        let lowestCard = opponent.deck.cards.sorted(by: { $0.score < $1.score}).first!
+        discard(player: opponent, card: lowestCard)
     }
     
     //------------------------------------------------------------------------------
@@ -188,7 +181,7 @@ class Game {
         print("Which card will you discard?")
         let choice = Int(readLine()!)
         print("You chose\(choice!)")
-        discard(player: human, cardToDiscard: choice!)
+        discard(player: human, card: human.deck.cards[choice!])
     }
     
     
@@ -196,9 +189,9 @@ class Game {
     // discard
     // Discard discards a card from hand.
     //------------------------------------------------------------------------------
-    func discard(player: Player, cardToDiscard: Int) {
-        let card = player.deck.cards[cardToDiscard]
-        player.deck.cards.remove(at: cardToDiscard)
+    func discard(player: Player, card: Card) {
+        player.deck.cards.removeAll(where: { $0 === card})
+        discard.cards.append(card)
         discard.cards.append(card)
         player.deck.show()
     }
@@ -216,7 +209,7 @@ class Game {
         print("Which card will you discard?")
         let choice = Int(readLine()!)
         print("You chose\(choice!)")
-        discard(player: human, cardToDiscard: choice!)
+        discard(player: human, card: human.deck.cards[choice!])
     }
     
     
