@@ -14,7 +14,7 @@ import Foundation
 // Defines the standard four suits in a deck of cards.
 //------------------------------------------------------------------------------
 enum Suit: CaseIterable {
-    case Spades, Diamonds, Clubs, Hearts
+    case Clubs, Diamonds, Hearts, Spades
     
 
     //------------------------------------------------------------------------------
@@ -32,6 +32,20 @@ enum Suit: CaseIterable {
             self = .Spades
         } else {
             return nil
+        }
+    }
+    
+    
+    //------------------------------------------------------------------------------
+    // short
+    // Returns a short text description of this suit.
+    //------------------------------------------------------------------------------
+    func short() -> String {
+        switch self {
+        case .Clubs: return "C"
+        case .Diamonds: return "D"
+        case .Hearts: return "H"
+        case .Spades: return "S"
         }
     }
 }

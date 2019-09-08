@@ -53,7 +53,7 @@ class Deck {
     
     //------------------------------------------------------------------------------
     // dealCard
-    // Moves a card from one deck to another
+    // Moves the first n cards in this deck to another deck.
     //------------------------------------------------------------------------------
     func dealCard(recipient: Deck, count: Int) {
         for _ in 1...count {
@@ -69,8 +69,8 @@ class Deck {
     // Prints a list of all the cards in the deck.
     //------------------------------------------------------------------------------
     func show() {
-        for card in cards {
-            card.show()
+        for (index, card) in cards.enumerated() {
+            print("   #\(index + 1): \(card.description()) (\(card.shortDescription()))")
         }
     }
 }
