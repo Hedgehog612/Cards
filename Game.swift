@@ -87,7 +87,7 @@ class Game {
                 drawHuman()
                 return
             } else if choice == "toss" {
-                toss()
+                tossHuman()
                 return
             } else if choice == "knock" {
                 knock()
