@@ -78,7 +78,7 @@ class Game {
     //------------------------------------------------------------------------------
     func takeTurn() {
         while true {
-            print("\n\nWhat now, boss?")
+            print("\n\nWhat now, boss? Choices are draw, toss, and knock.")
             let choice = readLine()
             print("You chose \(choice!)")
             if choice == "help" {
@@ -102,16 +102,46 @@ class Game {
     // moveAI is how the AI determines what to play and executes its turn.
     //------------------------------------------------------------------------------
     func moveAI() {
-        if discard.cards(at: 0).score > 9 {
-            toss(player: opponent)
+        if discard.cards[0].score > 9 {
+            tossAI(player: opponent)
             print("Your opponent draws from the discard.")
+            discardAI()
         }
         else {
-            draw(player: opponent)
-            print(")
+            drawAI(player: opponent, count: 1)
+            print("Your opponent draws from the deck.")
+            discardAI()
         }
     }
     
+    //------------------------------------------------------------------------------
+    // tossAI
+    // discardAI is how the AI determines what to discard.
+    //------------------------------------------------------------------------------
+    func tossAI() {
+        
+    }
+    
+    //------------------------------------------------------------------------------
+    // drawAI
+    // discardAI is how the AI determines what to discard.
+    //------------------------------------------------------------------------------
+    
+    //------------------------------------------------------------------------------
+    // discardAI
+    // discardAI is how the AI determines what to discard.
+    //------------------------------------------------------------------------------
+    func discardAI() {
+        var choice = 0
+        var choiceScore = 12
+        for (index, card) in opponent.deck.cards.enumerated() {
+            if card.score < choiceScore {
+                choiceScore = card.score
+                choice = index
+            }
+        }
+        discard(player: opponent, cardToDiscard: choice)
+    }
     
     //------------------------------------------------------------------------------
     // Help
@@ -143,16 +173,15 @@ class Game {
         print("Which card will you discard?")
         let choice = Int(readLine()!)
         print("You chose\(choice!)")
-        
-        draw(player: human, cardToDiscard: choice!)
+        discard(player: human, cardToDiscard: choice!)
     }
     
     
     //------------------------------------------------------------------------------
-    // draw
-    // Draw takes a card from the top of the deck, then discards a card from your hand.
+    // discard
+    // Discard discards a card from hand.
     //------------------------------------------------------------------------------
-    func draw(player: Player, cardToDiscard: Int) {
+    func discard(player: Player, cardToDiscard: Int) {
         let card = player.deck.cards[cardToDiscard]
         player.deck.cards.remove(at: cardToDiscard)
         discard.cards.append(card)
@@ -161,10 +190,10 @@ class Game {
     
     
     //------------------------------------------------------------------------------
-    // toss
-    // Toss draws the top card of the discard and then discards a card.
+    // tossHuman
+    // Toss draws the top card of the discard and then discards a card for human players.
     //------------------------------------------------------------------------------
-    func toss() {
+    func tossHuman() {
         discard.dealCard(recipient: human.deck, count: 1)
         print("\n\nYou add the card to your hand from the discard. Please choose a card to discard.")
         print("From 0 to 3, your cards are...")
@@ -172,10 +201,7 @@ class Game {
         print("Which card will you discard?")
         let choice = Int(readLine()!)
         print("You chose\(choice!)")
-        let card = human.deck.cards[choice!]
-        human.deck.cards.remove(at: choice!)
-        discard.cards.append(card)
-        human.deck.show()
+        discard(player: human, cardToDiscard: choice!)
     }
     
     
