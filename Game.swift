@@ -20,37 +20,56 @@ class Game {
     let player = Deck()
     let opponent = Deck()
     let discard = Deck()
+    var endGame = false     // Is it time to end the game?
+    
+    
+    //------------------------------------------------------------------------------
+    // Initializer
+    //------------------------------------------------------------------------------
+    init() {
+        // Build the deck
+        dealer.build()
+        dealer.shuffle()
+        
+        // Deal cards to all the players
+        dealer.dealCard(recipient: player, count: 3)
+        dealer.dealCard(recipient: opponent, count: 3)
+        
+        // And deal one card to the discard pile
+        dealer.dealCard(recipient: discard, count: 1)
+    }
 
     
     //------------------------------------------------------------------------------
     // Play
-    // Play begins the game by creating decks and starting the player's turn
+    // This is the main game loop. We repeatedly display the game state, let the
+    // players move, and check if the game is over.
     //------------------------------------------------------------------------------
     func play() {
-        dealer.build()
-        dealer.shuffle()
+        while !endGame {
+            showGameState()
+            takeTurn()
+            
+            if !endGame {
+                moveAI()
+            }
+        }
         
-        dealer.dealCard(recipient: player, count: 3)
-        
-        dealer.dealCard(recipient: opponent, count: 3)
-        
-        dealer.dealCard(recipient: discard, count: 1)
-        
+        // TODO: end the game
+    }
+    
+    
+    //------------------------------------------------------------------------------
+    // showGameState
+    // Show the game state on the console prior to the player's turn
+    //------------------------------------------------------------------------------
+    func showGameState() {
         print("playerDeck")
         player.show()
         print("opponentDeck")
         opponent.show()
         print("discardDeck")
         discard.show()
-        
-        
-        while true {
-            let doesAIMove = takeTurn()
-            
-            if doesAIMove {
-                moveAI()
-            }
-        }
     }
 
 
@@ -59,25 +78,24 @@ class Game {
     // This is where the player takes their turn.
     // This allows the player to chose between several actions on their turn.
     //------------------------------------------------------------------------------
-    func takeTurn() -> Bool {
-        // The bool here is for a later change, where some actions end the turn and some don't.
-        print("\n\nWhat now, boss?")
-        let choice = readLine()
-        print("You chose \(choice!)")
-        if choice == "help" {
-            help()
-            return false
-        } else if choice == "draw" {
-            draw()
-            return true
-        } else if choice == "toss" {
-            toss()
-            return true
-        } else if choice == "knock" {
-            knock()
-            return false
+    func takeTurn() {
+        while true {
+            print("\n\nWhat now, boss?")
+            let choice = readLine()
+            print("You chose \(choice!)")
+            if choice == "help" {
+                help()
+            } else if choice == "draw" {
+                draw()
+                return
+            } else if choice == "toss" {
+                toss()
+                return
+            } else if choice == "knock" {
+                knock()
+                return
+            }
         }
-        return false
     }
     
     
@@ -109,7 +127,7 @@ class Game {
     // draw
     // Draw takes a card from the top of the deck, then discards a card from your hand.
     //------------------------------------------------------------------------------
-    func draw() -> Bool {
+    func draw() {
         dealer.dealCard(recipient: player, count: 1)
         print("\n\nYou add the card to your hand from the deck. Please choose a card to discard.")
         print("From 0 to 3, your cards are...")
@@ -121,7 +139,6 @@ class Game {
         player.cards.remove(at: choice!)
         discard.cards.append(card)
         player.show()
-        return true
     }
     
     
@@ -129,7 +146,7 @@ class Game {
     // toss
     // Toss draws the top card of the discard and then discards a card.
     //------------------------------------------------------------------------------
-    func toss() -> Bool {
+    func toss() {
         discard.dealCard(recipient: player, count: 1)
         print("\n\nYou add the card to your hand from the discard. Please choose a card to discard.")
         print("From 0 to 3, your cards are...")
@@ -141,7 +158,6 @@ class Game {
         player.cards.remove(at: choice!)
         discard.cards.append(card)
         player.show()
-        return true
     }
     
     
@@ -158,8 +174,8 @@ class Game {
         for card in player.cards {
             if choice == card.suit {
                 playerScore = playerScore + card.score
-        
             }
         }
+        endGame = true
     }
 }
