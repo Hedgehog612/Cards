@@ -17,8 +17,8 @@ import Foundation
 //------------------------------------------------------------------------------
 class Game {
     let dealer = Deck()
-    let player = Deck()
-    let opponent = Deck()
+    let human = Player("You")
+    let opponent = Player("AI")
     let discard = Deck()
     var endGame = false     // Is it time to end the game?
     
@@ -32,8 +32,8 @@ class Game {
         dealer.shuffle()
         
         // Deal cards to all the players
-        dealer.dealCard(recipient: player, count: 3)
-        dealer.dealCard(recipient: opponent, count: 3)
+        dealer.dealCard(recipient: human.deck, count: 3)
+        dealer.dealCard(recipient: opponent.deck, count: 3)
         
         // And deal one card to the discard pile
         dealer.dealCard(recipient: discard, count: 1)
@@ -64,9 +64,7 @@ class Game {
     // Show the game state on the console prior to the player's turn
     //------------------------------------------------------------------------------
     func showGameState() {
-        print("playerDeck")
-        player.show()
-        print("opponentDeck")
+        human.show()
         opponent.show()
         print("discardDeck")
         discard.show()
@@ -130,17 +128,17 @@ class Game {
     // Draw takes a card from the top of the deck, then discards a card from your hand.
     //------------------------------------------------------------------------------
     func draw() {
-        dealer.dealCard(recipient: player, count: 1)
+        dealer.dealCard(recipient: human.deck, count: 1)
         print("\n\nYou add the card to your hand from the deck. Please choose a card to discard.")
         print("From 0 to 3, your cards are...")
-        player.show()
+        human.deck.show()
         print("Which card will you discard?")
         let choice = Int(readLine()!)
         print("You chose\(choice!)")
-        let card = player.cards[choice!]
-        player.cards.remove(at: choice!)
+        let card = human.deck.cards[choice!]
+        human.deck.cards.remove(at: choice!)
         discard.cards.append(card)
-        player.show()
+        human.deck.show()
     }
     
     
@@ -149,17 +147,17 @@ class Game {
     // Toss draws the top card of the discard and then discards a card.
     //------------------------------------------------------------------------------
     func toss() {
-        discard.dealCard(recipient: player, count: 1)
+        discard.dealCard(recipient: human.deck, count: 1)
         print("\n\nYou add the card to your hand from the discard. Please choose a card to discard.")
         print("From 0 to 3, your cards are...")
-        player.show()
+        human.deck.show()
         print("Which card will you discard?")
         let choice = Int(readLine()!)
         print("You chose\(choice!)")
-        let card = player.cards[choice!]
-        player.cards.remove(at: choice!)
+        let card = human.deck.cards[choice!]
+        human.deck.cards.remove(at: choice!)
         discard.cards.append(card)
-        player.show()
+        human.deck.show()
     }
     
     
@@ -173,7 +171,7 @@ class Game {
         let choice = readLine()
         print("You chose \(choice!)")
         var playerScore = 0
-        for card in player.cards {
+        for card in human.deck.cards {
             if choice == suitString[card.suit] {
                 playerScore = playerScore + card.score
             }
@@ -183,7 +181,7 @@ class Game {
         var opponentHeart = 0
         var opponentSpade = 0
         var opponentDiamond = 0
-        for card in opponent.cards {
+        for card in opponent.deck.cards {
             if suitString [card.suit] == "Club" {
                 opponentClub = opponentClub + card.score
             }
