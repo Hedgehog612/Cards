@@ -92,6 +92,9 @@ class Game {
             } else if choice == "knock" {
                 knock()
                 return
+            } else if choice == "31" {
+                thirtyOne()
+                return
             }
         }
     }
@@ -102,6 +105,14 @@ class Game {
     // moveAI is how the AI determines what to play and executes its turn.
     //------------------------------------------------------------------------------
     func moveAI() {
+        var opponentScore = 0
+        for card in opponent.deck.cards {
+            opponentScore = opponentScore + card.score
+        }
+        if opponentScore == 31 {
+            print("Your opponent reaches 31 points and you lose the game!")
+            endGame = true
+        }
         if discard.cards[0].score > 9 {
             tossAI()
             print("Your opponent draws from the discard.")
@@ -244,6 +255,25 @@ class Game {
         }
         print("You had \(playerScore) points in \(chosenSuit)")
         print("The AI had \(opponentScore) points in \(opponentSuit)")
+        endGame = true
+    }
+    
+    //------------------------------------------------------------------------------
+    // thirtyOne
+    // thirtyOne tests to see if your cards are worth exactly 31 points.
+    // If they are, you win, otherwise, you lose.
+    //------------------------------------------------------------------------------
+    func thirtyOne() {
+        var playerScore = 0
+        for card in human.deck.cards {
+            playerScore = playerScore + card.score
+        }
+        if playerScore == 31 {
+            print("You win!")
+        }
+        else {
+            print("You lose!")
+        }
         endGame = true
     }
 }
