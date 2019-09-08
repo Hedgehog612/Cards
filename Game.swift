@@ -84,7 +84,7 @@ class Game {
             if choice == "help" {
                 help()
             } else if choice == "draw" {
-                draw()
+                drawHuman()
                 return
             } else if choice == "toss" {
                 toss()
@@ -131,10 +131,11 @@ class Game {
     
 
     //------------------------------------------------------------------------------
-    // draw
-    // Draw takes a card from the top of the deck, then discards a card from your hand.
+    // drawHuman
+    // The human player wants to draw a card. Ask which card they want to disard, then
+    // call the generic draw() function.
     //------------------------------------------------------------------------------
-    func draw() {
+    func drawHuman() {
         dealer.dealCard(recipient: human.deck, count: 1)
         print("\n\nYou add the card to your hand from the deck. Please choose a card to discard.")
         print("From 0 to 3, your cards are...")
@@ -142,10 +143,20 @@ class Game {
         print("Which card will you discard?")
         let choice = Int(readLine()!)
         print("You chose\(choice!)")
-        let card = human.deck.cards[choice!]
-        human.deck.cards.remove(at: choice!)
+        
+        draw(player: human, cardToDiscard: choice!)
+    }
+    
+    
+    //------------------------------------------------------------------------------
+    // draw
+    // Draw takes a card from the top of the deck, then discards a card from your hand.
+    //------------------------------------------------------------------------------
+    func draw(player: Player, cardToDiscard: Int) {
+        let card = player.deck.cards[cardToDiscard]
+        player.deck.cards.remove(at: cardToDiscard)
         discard.cards.append(card)
-        human.deck.show()
+        player.deck.show()
     }
     
     
