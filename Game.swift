@@ -182,7 +182,7 @@ class Game {
         print("Choose your suit. Choices are Club, Diamond, Heart, and Spade.")
         let choice = readLine()
         print("You chose \(choice!)")
-        let chosenSuit = suitFromString(choice!)
+        let chosenSuit = Suit(choice!)!
 
         let playerScore = human.scoreSuit(suit: chosenSuit)
         
@@ -190,7 +190,7 @@ class Game {
         var opponentSuit = Suit.Club
         var opponentScore = 0
         
-        for suit in suits {
+        for suit in Suit.allCases {
             let scoreInSuit = opponent.scoreSuit(suit: suit)
             if scoreInSuit > opponentScore {
                 opponentScore = scoreInSuit
@@ -205,8 +205,8 @@ class Game {
         else {
             print("You lose!")
         }
-        print("You had \(playerScore) points in \(suitString[chosenSuit]!)")
-        print("The AI had \(opponentScore) points in \(suitString[opponentSuit]!)")
+        print("You had \(playerScore) points in \(chosenSuit.string())")
+        print("The AI had \(opponentScore) points in \(opponentSuit.string())")
         endGame = true
     }
 }
