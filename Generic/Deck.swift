@@ -31,8 +31,8 @@ class Deck {
     //------------------------------------------------------------------------------
     func build() {
         for suit in Suit.allCases {
-            for face in faces {
-                cards.append(Card(face: face, suit: suit, score: faceScore[face]!))
+            for face in Face.allCases {
+                cards.append(Card(face: face, suit: suit, score: face.score()))
             }
         }
     }
