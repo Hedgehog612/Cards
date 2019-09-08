@@ -192,7 +192,6 @@ class Game {
     func discard(player: Player, card: Card) {
         player.deck.cards.removeAll(where: { $0 === card})
         discard.cards.append(card)
-        discard.cards.append(card)
         player.deck.show()
     }
     
