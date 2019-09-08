@@ -167,35 +167,35 @@ class Game {
     // This ends the game - either the player or the opponent loses.
     //------------------------------------------------------------------------------
     func knock() {
+        // Ask the player to pick a suit and score that suit.
         print("Choose your suit. Choices are Club, Diamond, Heart, and Spade.")
         let choice = readLine()
         print("You chose \(choice!)")
-        var playerScore = 0
         let chosenSuit = suitFromString(choice!)
-        playerScore = human.scoreSuit(suit: chosenSuit)
+
+        let playerScore = human.scoreSuit(suit: chosenSuit)
+        
+        // Now figure out the opponent's best suit
+        var opponentSuit = Suit.Club
         var opponentScore = 0
-        let opponentClub = opponent.scoreSuit(suit: .Club)
-        let opponentHeart = opponent.scoreSuit(suit: .Heart)
-        let opponentSpade = opponent.scoreSuit(suit: .Spade)
-        let opponentDiamond = opponent.scoreSuit(suit: .Diamond)
-        if opponentClub > opponentScore {
-            opponentScore = opponentClub
+        
+        for suit in suits {
+            let scoreInSuit = opponent.scoreSuit(suit: suit)
+            if scoreInSuit > opponentScore {
+                opponentScore = scoreInSuit
+                opponentSuit = suit
+            }
         }
-        if opponentHeart > opponentScore {
-            opponentScore = opponentHeart
-        }
-        if opponentSpade > opponentScore {
-            opponentScore = opponentSpade
-        }
-        if opponentDiamond > opponentScore {
-            opponentScore = opponentDiamond
-        }
+        
+        // Who won?
         if playerScore > opponentScore {
-            print("You win!")
+            print("You win!\n")
         }
         else {
             print("You lose!")
         }
+        print("You had \(playerScore) points in \(suitString[chosenSuit]!)")
+        print("The AI had \(opponentScore) points in \(suitString[opponentSuit]!)")
         endGame = true
     }
 }
