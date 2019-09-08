@@ -28,6 +28,22 @@ let suitString: [Suit: String] = [
     .Spade: "Spade",
 ]
 
+// Parses a string and returns the suit it corresponds to
+func suitFromString(_ suitName: String) -> Suit {
+    if suitName.hasPrefix("C") || suitName.hasPrefix("c") {
+        return .Club
+    } else if suitName.hasPrefix("D") || suitName.hasPrefix("d") {
+        return .Diamond
+    } else if suitName.hasPrefix("H") || suitName.hasPrefix("h") {
+        return .Heart
+    } else if suitName.hasPrefix("S") || suitName.hasPrefix("s") {
+        return .Spade
+    }
+    
+    print("ERROR! Bad suit name \(suitName).")
+    return .Club
+}
+
 //------------------------------------------------------------------------------
 // Face
 // Defines the standard faces for a deck of cards (Ace, 2 - 10, and the

@@ -36,4 +36,20 @@ class Player {
         print(name)
         deck.show()
     }
+    
+    
+    //------------------------------------------------------------------------------
+    // scoreSuit
+    // How many points do we have in a specified suit?
+    //------------------------------------------------------------------------------
+    func scoreSuit(suit: Suit) -> Int {
+        var score = 0
+        for card in deck.cards {
+            if suit == card.suit {
+                score = score + card.score
+            }
+        }
+
+        return score
+    }
 }
