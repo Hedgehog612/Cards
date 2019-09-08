@@ -78,7 +78,7 @@ class Game {
     //------------------------------------------------------------------------------
     func takeTurn() {
         while true {
-            print("\n\nWhat now, boss? Choices are draw, toss, and knock.")
+            print("\n\nWhat now, boss? Choices are draw, toss, knock, and 31.")
             let choice = readLine()
             print("You chose \(choice!)")
             if choice == "help" {
