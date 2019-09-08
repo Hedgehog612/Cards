@@ -100,7 +100,8 @@ class Game {
         print("Your objective is to have cards worth a total of 31 points in hand.")
         print("Face cards are worth 10 and aces are 11.")
         print("To draw from the discard, type toss. To draw from the deck, type draw.")
-        print("If you have 31 points, type win. If you think you have more points than your opponent, type knock.")
+        print("If you have 31 points, type win. If you think you have more points than your opponent in a specific suit, type knock.")
+        print("Be careful - if you're wrong, you lose the game.")
     }
     
 
@@ -147,8 +148,18 @@ class Game {
     //------------------------------------------------------------------------------
     // knock
     // Knock tests your score in a specific suit against your opponent's.
+    // This ends the game - either the player or the opponent loses.
     //------------------------------------------------------------------------------
     func knock() {
+        print("Choose your suit. Choices are Club, Diamond, Heart, and Spade.")
+        let choice = readLine()
+        print("You chose \(choice!)")
+        var playerScore = 0
+        for card in player.cards {
+            if choice == card.suit {
+                playerScore = playerScore + card.score
         
+            }
+        }
     }
 }

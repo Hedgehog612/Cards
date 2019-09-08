@@ -20,7 +20,13 @@ enum Suit {
 // Defines all the available suits
 let Suits: [Suit] = [.Club, .Diamond, .Heart, .Spade]
 
-
+// Renders the suits as strings for reference
+let suitString: [Suit: String] = [
+    .Club: "Club"
+    .Diamond: "Diamond"
+    .Heart: "Heart"
+    .Spade: "Spade"
+]
 
 //------------------------------------------------------------------------------
 // Face
@@ -50,8 +56,6 @@ let faceScore: [Face: Int] = [
     .Queen: 10,
     .King: 10
 ]
-
-
 
 //------------------------------------------------------------------------------
 // Card
