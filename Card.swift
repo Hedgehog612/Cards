@@ -23,19 +23,19 @@ let Suits: [Suit] = [.Club, .Diamond, .Heart, .Spade]
 
 
 //------------------------------------------------------------------------------
-// Value
-// Defines the standard values for a deck of cards (Ace, 2 - 10, and the 
+// Face
+// Defines the standard faces for a deck of cards (Ace, 2 - 10, and the
 // face cards).
 //------------------------------------------------------------------------------
-enum Value {
+enum Face {
     case Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
 }
 
-// Defines all the available values
-let Values: [Value] = [.Ace, .Two, .Three, .Four, .Five, .Six, .Seven, .Eight, .Nine, .Ten, .Jack, .Queen, .King]
+// Defines all the available faces
+let faces: [Face] = [.Ace, .Two, .Three, .Four, .Five, .Six, .Seven, .Eight, .Nine, .Ten, .Jack, .Queen, .King]
 
-// Specifies the point value of each value.
-let valuePoints: [Value: Int] = [
+// Specifies the score of each face.
+let faceScore: [Face: Int] = [
     .Ace: 11,
     .Two: 2,
     .Three: 3,
@@ -58,27 +58,27 @@ let valuePoints: [Value: Int] = [
 // Handles a single playing card.
 //------------------------------------------------------------------------------
 class Card {
-    var value: Value    // The value of the card (ace, 3, queen, etc.)
+    var face: Face      // The face of the card (ace, 3, queen, etc.)
     var suit: Suit      // The suit of the card
-    var point: Int      // The point value for the 31 points game
+    var score: Int      // The score for the 31 points game
     var order = 0.0     // Randomly assigned, used for shuffling the deck.
     
     
     //------------------------------------------------------------------------------
     // Initializer
     //------------------------------------------------------------------------------
-    init(value valueIn: Value, suit suitIn: Suit, point pointIn: Int) {
-        value = valueIn
-        point = pointIn
+    init(face faceIn: Face, suit suitIn: Suit, score scoreIn: Int) {
+        face = faceIn
         suit = suitIn
+        score = scoreIn
     }
-    
+
     
     //------------------------------------------------------------------------------
     // show
     // Renders a description of the card to the console.
     //------------------------------------------------------------------------------
     func show() {
-        print("This card is the \(value) of \(suit).")
+        print("This card is the \(face) of \(face).")
     }
 }

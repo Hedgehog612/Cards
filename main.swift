@@ -10,20 +10,20 @@ import Foundation
 import Cocoa
 
 func play() {
-    let dealer = Deck(card: Card(value: .Ace, suit: .Spade, point: 11))
+    let dealer = Deck(card: Card(face: .Ace, suit: .Spade, score: 11))
     dealer.cards.remove(at: 0)
     dealer.build()
     dealer.shuffle()
     
-    let player = Deck(card: Card(value: .Ace, suit: .Spade, point: 11))
+    let player = Deck(card: Card(face: .Ace, suit: .Spade, score: 11))
     player.cards.remove(at: 0)
     dealer.dealCard(recipient: player, count: 3)
     
-    let opponent = Deck(card: Card(value: .Ace, suit: .Spade, point: 11))
+    let opponent = Deck(card: Card(face: .Ace, suit: .Spade, score: 11))
     opponent.cards.remove(at: 0)
     dealer.dealCard(recipient: opponent, count: 3)
     
-    let discard = Deck(card: Card(value: .Ace, suit: .Spade, point: 11))
+    let discard = Deck(card: Card(face: .Ace, suit: .Spade, score: 11))
     discard.cards.remove(at: 0)
     dealer.dealCard(recipient: discard, count: 1)
     

@@ -18,8 +18,8 @@ class Deck {
     
     func build() {
         for suit in Suits {
-            for value in Values {
-                cards.append(Card(value: value, suit: suit, point: valuePoints[value]!))
+            for face in faces {
+                cards.append(Card(face: face, suit: suit, score: faceScore[face]!))
             }
         }
     }
