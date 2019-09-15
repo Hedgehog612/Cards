@@ -13,6 +13,7 @@
 		FF3EC2E22325B4780071DA77 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EC2E12325B4780071DA77 /* Suit.swift */; };
 		FF3EC2E42325B4830071DA77 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EC2E32325B4830071DA77 /* Face.swift */; };
 		FF7BD04D23257321006396D5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7BD04C23257321006396D5 /* Game.swift */; };
+		FF82AFFD232E83DA002CAD0E /* Tester.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF82AFFC232E83DA002CAD0E /* Tester.swift */; };
 		FF9C5B4C23257FCC00D09CD4 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9C5B4B23257FCC00D09CD4 /* Player.swift */; };
 		FFACC1D923220FEE0012465F /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFACC1D823220FEE0012465F /* main.swift */; };
 /* End PBXBuildFile section */
@@ -37,6 +38,7 @@
 		FF3EC2E12325B4780071DA77 /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		FF3EC2E32325B4830071DA77 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
 		FF7BD04C23257321006396D5 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		FF82AFFC232E83DA002CAD0E /* Tester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tester.swift; sourceTree = "<group>"; };
 		FF9C5B4B23257FCC00D09CD4 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		FFACC1D823220FEE0012465F /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +81,7 @@
 				F44624FF23243CEF005FD22D /* Deck.swift */,
 				FF3EC2E32325B4830071DA77 /* Face.swift */,
 				FF3EC2E12325B4780071DA77 /* Suit.swift */,
+				FF82AFFC232E83DA002CAD0E /* Tester.swift */,
 			);
 			path = Generic;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				FFACC1D923220FEE0012465F /* main.swift in Sources */,
 				FF9C5B4C23257FCC00D09CD4 /* Player.swift in Sources */,
 				FF3EC2E22325B4780071DA77 /* Suit.swift in Sources */,
+				FF82AFFD232E83DA002CAD0E /* Tester.swift in Sources */,
 				FF7BD04D23257321006396D5 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
