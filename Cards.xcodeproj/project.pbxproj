@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F44624FE23243CCF005FD22D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44624FD23243CCF005FD22D /* Card.swift */; };
 		F446250023243CEF005FD22D /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = F44624FF23243CEF005FD22D /* Deck.swift */; };
+		F4FD54222325CA95009166BE /* commandLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FD54212325CA95009166BE /* commandLine.swift */; };
 		FF3EC2E22325B4780071DA77 /* Suit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EC2E12325B4780071DA77 /* Suit.swift */; };
 		FF3EC2E42325B4830071DA77 /* Face.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF3EC2E32325B4830071DA77 /* Face.swift */; };
 		FF7BD04D23257321006396D5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7BD04C23257321006396D5 /* Game.swift */; };
@@ -32,6 +33,7 @@
 		F44624FD23243CCF005FD22D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		F44624FF23243CEF005FD22D /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 		F492C7E3231E1D4500A31D45 /* Cards */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Cards; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4FD54212325CA95009166BE /* commandLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commandLine.swift; sourceTree = "<group>"; };
 		FF3EC2E12325B4780071DA77 /* Suit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suit.swift; sourceTree = "<group>"; };
 		FF3EC2E32325B4830071DA77 /* Face.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Face.swift; sourceTree = "<group>"; };
 		FF7BD04C23257321006396D5 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				FF3EC2E02325B4610071DA77 /* Generic */,
 				FF9C5B4B23257FCC00D09CD4 /* Player.swift */,
+				F4FD54212325CA95009166BE /* commandLine.swift */,
 				FF7BD04C23257321006396D5 /* Game.swift */,
 				FFACC1D823220FEE0012465F /* main.swift */,
 				F492C7E4231E1D4500A31D45 /* Products */,
@@ -141,6 +144,7 @@
 				FF3EC2E42325B4830071DA77 /* Face.swift in Sources */,
 				F446250023243CEF005FD22D /* Deck.swift in Sources */,
 				F44624FE23243CCF005FD22D /* Card.swift in Sources */,
+				F4FD54222325CA95009166BE /* commandLine.swift in Sources */,
 				FFACC1D923220FEE0012465F /* main.swift in Sources */,
 				FF9C5B4C23257FCC00D09CD4 /* Player.swift in Sources */,
 				FF3EC2E22325B4780071DA77 /* Suit.swift in Sources */,
