@@ -269,4 +269,19 @@ class Game {
         }
         endGame = true
     }
+    
+    
+    //------------------------------------------------------------------------------
+    // runAllTests
+    // Runs all our tests
+    //------------------------------------------------------------------------------
+    class func runAllTests() {
+        let tester = Tester()
+        
+        // Test all our classes
+        Suit.testClass(tester: tester)
+        Face.testClass(tester: tester)
+
+        tester.reportResults()
+    }
 }

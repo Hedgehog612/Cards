@@ -13,6 +13,9 @@ import Cocoa
 //------------------------------------------------------------------------------
 // Launch the game
 //------------------------------------------------------------------------------
+// Before we begin, let's autotest
+Game.runAllTests()
+
 let game = Game()
 game.play()
 
