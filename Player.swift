@@ -53,3 +53,5 @@ class Player {
         return score
     }
 }
+
+// TODO: Add tests

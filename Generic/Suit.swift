@@ -22,13 +22,13 @@ enum Suit: CaseIterable {
     // Parses a string and returns the corresponding Suit
     //------------------------------------------------------------------------------
     init?(_ suitName: String) {
-        if suitName.lowercased().hasPrefix("c") {
+        if "clubs".hasPrefix(suitName.lowercased()) {
             self = .Clubs
-        } else if suitName.lowercased().hasPrefix("d") {
+        } else if "diamonds".hasPrefix(suitName.lowercased()) {
             self = .Diamonds
-        } else if suitName.lowercased().hasPrefix("h") {
+        } else if "hearts".hasPrefix(suitName.lowercased()) {
             self = .Hearts
-        } else if suitName.lowercased().hasPrefix("s") {
+        } else if "spades".hasPrefix(suitName.lowercased()) {
             self = .Spades
         } else {
             return nil

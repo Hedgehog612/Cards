@@ -16,7 +16,7 @@ import Foundation
 class Tester {
     var testsRun = 0            // How many tests have we run
     var errors = [(String, String, Int)]()     // All the error messages we've generated
-    
+    // String 1 covers the error message. String 2 covers the file path. Int covers the line number.
     
     //------------------------------------------------------------------------------
     // Initializer
@@ -26,7 +26,7 @@ class Tester {
     
     
     //------------------------------------------------------------------------------
-    // recordTest
+    // test
     // Records the result of a single test.
     //------------------------------------------------------------------------------
     func test(_ result: Bool, msg: String = "", file: String = #file, line: Int = #line) {

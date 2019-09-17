@@ -23,31 +23,31 @@ enum Face: CaseIterable {
     // Parses a string and returns the corresponding Face
     //------------------------------------------------------------------------------
     init?(_ faceName: String) {
-        if faceName.lowercased().hasPrefix("k") {
+        if "king".hasPrefix(faceName.lowercased()) {
             self = .King
-        } else if faceName.lowercased().hasPrefix("q") {
+        } else if "queen".hasPrefix(faceName.lowercased()) {
             self = .Queen
-        } else if faceName.lowercased().hasPrefix("j") {
+        } else if "jack".hasPrefix(faceName.lowercased()) {
             self = .Jack
-        } else if faceName.hasPrefix("10") || faceName.lowercased().hasPrefix("ten") {
+        } else if faceName == "10" || "ten".hasPrefix(faceName.lowercased()) {
             self = .Ten
-        } else if faceName.hasPrefix("9") || faceName.lowercased().hasPrefix("nine") {
+        } else if faceName == "9" || "nine".hasPrefix(faceName.lowercased()) {
             self = .Nine
-        } else if faceName.hasPrefix("8") || faceName.lowercased().hasPrefix("eight") {
+        } else if faceName == "8" || "eight".hasPrefix(faceName.lowercased()) {
             self = .Eight
-        } else if faceName.hasPrefix("7") || faceName.lowercased().hasPrefix("seven") {
+        } else if faceName == "7" || "seven".hasPrefix(faceName.lowercased()) {
             self = .Seven
-        } else if faceName.hasPrefix("6") || faceName.lowercased().hasPrefix("six") {
+        } else if faceName == "6" || "six".hasPrefix(faceName.lowercased()) {
             self = .Six
-        } else if faceName.hasPrefix("5") || faceName.lowercased().hasPrefix("five") {
+        } else if faceName == "5" || "five".hasPrefix(faceName.lowercased()) {
             self = .Five
-        } else if faceName.hasPrefix("4") || faceName.lowercased().hasPrefix("four") {
+        } else if faceName == "4" || "four".hasPrefix(faceName.lowercased()) {
             self = .Four
-        } else if faceName.hasPrefix("3") || faceName.lowercased().hasPrefix("three") {
+        } else if faceName == "3" || "three".hasPrefix(faceName.lowercased()) {
             self = .Three
-        } else if faceName.hasPrefix("2") || faceName.lowercased().hasPrefix("two") {
+        } else if faceName == "2" || "two".hasPrefix(faceName.lowercased()) {
             self = .Two
-        } else if faceName.lowercased().hasPrefix("a") || faceName.hasPrefix("1") {
+        } else if "ace".hasPrefix(faceName.lowercased()) || faceName == "1" {
             self = .Ace
         } else {
             return nil

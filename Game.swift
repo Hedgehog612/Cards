@@ -9,7 +9,6 @@
 import Foundation
 
 
-
 //------------------------------------------------------------------------------
 // Game
 // Game is the master class that owns everything in the game and runs the core
@@ -38,6 +37,25 @@ class Game {
         // And deal one card to the discard pile
         dealer.dealCard(recipient: discard, count: 1)
     }
+    
+    
+    //------------------------------------------------------------------------------
+    //
+    //------------------------------------------------------------------------------
+    let commands: [CommandInfo] = [
+        ("knock",       .Suit,      knock),
+        ("draw",        .None,      drawHuman)
+    ]
+    
+    
+    func foobar(arg: Any...) {
+        let name = arg[0] as! Suit
+        print("\n\n\nI am the mighty foobar!")
+        print("You are the puny \(name)\n\n\n")
+    }
+    
+    
+
 
     
     //------------------------------------------------------------------------------
@@ -48,14 +66,14 @@ class Game {
     func play() {
         while !endGame {
             showGameState()
-            takeTurn()
+            let command = Command()
+            command.getCommand(game: self)
             
             if !endGame {
                 moveAI()
             }
         }
         
-        // TODO: end the game
     }
     
     
@@ -68,35 +86,6 @@ class Game {
         opponent.show()
         print("discardDeck")
         discard.show()
-    }
-
-
-    //------------------------------------------------------------------------------
-    // takeTurn
-    // This is where the player takes their turn.
-    // This allows the player to chose between several actions on their turn.
-    //------------------------------------------------------------------------------
-    func takeTurn() {
-        while true {
-            print("\n\nWhat now, boss? Choices are draw, toss, knock, and 31.")
-            let choice = readLine()
-            print("You chose \(choice!)")
-            if choice == "help" {
-                help()
-            } else if choice == "draw" {
-                drawHuman()
-                return
-            } else if choice == "toss" {
-                tossHuman()
-                return
-            } else if choice == "knock" {
-                knock()
-                return
-            } else if choice == "31" {
-                thirtyOne()
-                return
-            }
-        }
     }
     
     
@@ -173,15 +162,15 @@ class Game {
     // The human player wants to draw a card. Ask which card they want to disard, then
     // call the generic draw() function.
     //------------------------------------------------------------------------------
-    func drawHuman() {
+    func drawHuman(args: Any...) {
         dealer.dealCard(recipient: human.deck, count: 1)
         print("\n\nYou add the card to your hand from the deck. Please choose a card to discard.")
-        print("From 0 to 3, your cards are...")
+        print("From 1 to 4, your cards are...")
         human.deck.show()
         print("Which card will you discard?")
         let choice = Int(readLine()!)
-        print("You chose\(choice!)")
-        discard(player: human, card: human.deck.cards[choice!])
+        print("You chose \(choice!)")
+        discard(player: human, card: human.deck.cards[choice! - 1])
     }
     
     
@@ -193,6 +182,7 @@ class Game {
         player.deck.cards.removeAll(where: { $0 === card})
         discard.cards.append(card)
         player.deck.show()
+        print("\n")
     }
     
     
@@ -217,13 +207,8 @@ class Game {
     // Knock tests your score in a specific suit against your opponent's.
     // This ends the game - either the player or the opponent loses.
     //------------------------------------------------------------------------------
-    func knock() {
-        // Ask the player to pick a suit and score that suit.
-        print("Choose your suit. Choices are Club, Diamond, Heart, and Spade.")
-        let choice = readLine()
-        print("You chose \(choice!)")
-        let chosenSuit = Suit(choice!)!
-        //TODO: Prevent crashes when an incorrect entry is made
+    func knock(args: Any...) {
+        let chosenSuit = args[0] as! Suit
 
         let playerScore = human.scoreSuit(suit: chosenSuit)
         
@@ -281,7 +266,11 @@ class Game {
         // Test all our classes
         Suit.testClass(tester: tester)
         Face.testClass(tester: tester)
-
+        Card.testClass(tester: tester)
+        Deck.testClass(tester: tester)
         tester.reportResults()
     }
+    
+    //    TODO: Restructure game to separate specific 31 code from general card code
+//              Add tests
 }
