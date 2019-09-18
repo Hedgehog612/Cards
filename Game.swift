@@ -44,7 +44,9 @@ class Game {
     //------------------------------------------------------------------------------
     let commands: [CommandInfo] = [
         ("knock",       .Suit,      knock),
-        ("draw",        .None,      drawHuman)
+        ("draw",        .None,      drawHuman),
+        ("toss",        .None,      tossHuman),
+        ("31",          .None,      thirtyOne)
     ]
     
     
@@ -98,6 +100,7 @@ class Game {
         for card in opponent.deck.cards {
             opponentScore = opponentScore + card.score
         }
+        print("Your opponent's deck:")
         if opponentScore == 31 {
             print("Your opponent reaches 31 points and you lose the game!")
             endGame = true
@@ -169,7 +172,7 @@ class Game {
         human.deck.show()
         print("Which card will you discard?")
         let choice = Int(readLine()!)
-        print("You chose \(choice!)")
+        print("You discarded card \(choice!)")
         discard(player: human, card: human.deck.cards[choice! - 1])
     }
     
@@ -190,14 +193,14 @@ class Game {
     // tossHuman
     // Toss draws the top card of the discard and then discards a card for human players.
     //------------------------------------------------------------------------------
-    func tossHuman() {
+    func tossHuman(args: Any...) {
         discard.dealCard(recipient: human.deck, count: 1)
         print("\n\nYou add the card to your hand from the discard. Please choose a card to discard.")
         print("From 0 to 3, your cards are...")
         human.deck.show()
         print("Which card will you discard?")
         let choice = Int(readLine()!)
-        print("You chose\(choice!)")
+        print("You discarded card \(choice!)")
         discard(player: human, card: human.deck.cards[choice!])
     }
     
@@ -241,7 +244,7 @@ class Game {
     // thirtyOne tests to see if your cards are worth exactly 31 points.
     // If they are, you win, otherwise, you lose.
     //------------------------------------------------------------------------------
-    func thirtyOne() {
+    func thirtyOne(args: Any...) {
         var playerScore = 0
         for card in human.deck.cards {
             playerScore = playerScore + card.score

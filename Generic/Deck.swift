@@ -66,7 +66,7 @@ class Deck: Equatable {
     func shuffle() {
         // Assign a random value to each card's order property, then sort based on order.
         for card in cards {
-            card.order = Double.random(in: 0...1)
+            card.order = Double.random(in: 0.01...1)
         }
         cards.sort { $0.order < $1.order }
     }
@@ -125,8 +125,15 @@ class Deck: Equatable {
         tester.test(deckOne.contains(card: Card("5-S")!))
         tester.test(!deckTwo.contains(card: Card("3-D")!))
         
+        deckThree.build()
+        tester.test(deckThree.cards.count == 55)
+        tester.test(deckThree.contains(card: Card("A-S")!))
+        
+        deckThree.shuffle()
+        for card in deckThree.cards {
+            tester.test(card.order != 0)
+        }
+        
+        
     }
-    
-    //    TODO: Flesh out the deck testing with more test cases and more test functions
-
 }
